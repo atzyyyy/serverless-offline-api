@@ -1,0 +1,23 @@
+service: my-api
+frameworkVersion: '3'
+	
+#need serverless-offline plugins
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  hello:
+    handler: hellohandler.hello
+    events:
+      - httpApi: 'GET /hello'
+      - httpApi: 'POST /hello'
+  hi: 
+    handler: hihandler.hi
+    events:
+      - httpApi:
+          path: /hi
+          method: get
